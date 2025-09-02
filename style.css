@@ -1,0 +1,546 @@
+:root{
+  --bs-warning:var(pr);
+
+   
+}
+h5{
+  color: var(--bs-warning);
+}
+
+
+
+.carousel-item img{
+    width: 100%;
+    height: 80vh;
+
+}
+h1{
+    font-family: "Dancing Script", cursive;
+}
+
+.card-body{
+
+  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+}
+.card-body img{
+    min-width: 50%;
+    max-height: 200px;
+    
+}
+.main{
+  width: 500px;
+  height: 500px;
+}
+
+
+/* Smooth animation for all cards */
+.card {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+/* Zoom effect on hover */
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Hover effect for cards with bg-primary */
+.card.bg-primary:hover {
+  background-color: black !important;
+  color: white !important;
+}
+.card.bg-primary:hover .btn {
+  background-color: var(--bs-warning) !important;
+  color: black !important;
+}
+.card.bg-primary:hover i {
+  background-color: var(--bs-primary) !important;
+  color: white !important;
+}
+
+/* Hover effect for white/light cards (without bg-primary) */
+.card:not(.bg-warning):hover {
+  background-color: var(--bs-warning) !important;
+  color: black !important;
+}
+.card:not(.bg-warning):hover .btn {
+  background-color: black !important;
+  color: var(--bs-warning) !important;
+}
+.card:not(.bg-warning):hover i {
+  background-color: var(--bs-warning) !important;
+  color: black !important;
+}
+
+.new-img:has(.card:hover) .card:not(:hover){
+  opacity: .15;        /* baqi cards zyada fade */
+}
+.new-img:has(.card:hover) .card:hover{
+  opacity: 1;          /* hovered card normal */
+}
+/* Team section (sirf is row ke cards par effect) */
+#team .row:has(.card:hover) .card:not(:hover){
+  opacity: .15;
+}
+#team .row:has(.card:hover) .card:hover{
+  opacity: 1;
+}
+
+/* Fallback (agar :has() support na ho) */
+#team .row:hover .card{
+  opacity: .15;
+}
+#team .row:hover .card:hover{
+  opacity: 1;
+}
+/* Services section only (both rows) */
+#services .row:has(.card:hover) .card:not(:hover){
+  opacity: .15;      /* non-hover cards fade */
+}
+#services .row:has(.card:hover) .card:hover{
+  opacity: 1;        /* hovered stays normal */
+}
+
+/* Fallback for browsers without :has() */
+@supports not selector(:has(*)) {
+  #services .row:hover .card{ opacity: .15; }
+  #services .row:hover .card:hover{ opacity: 1; }
+}
+
+.card i{
+    width: 40px;
+    border-radius: 10px;
+
+    
+}
+.new-img img{
+  width: 120px;
+  height: 120px;
+ position: absolute;
+ bottom:-60px;
+ left: 85px;
+}
+.new-img{
+  padding-top: 50px;
+}
+.quote-open{
+  font-size: 4rem;      /* adjust size as you like */
+  line-height: 0;       /* keeps it snug */
+  
+}
+
+  .card:not(.bg-primary):hover .quote-open{
+    color: white;
+  }
+
+.div{
+  padding-left: 50px;
+  margin-top: 50px;
+
+}
+.div h1{
+  font-weight: 800;
+}
+input{
+  width: 350px;
+  height: 45px;
+  border-radius: 10px;
+  background-color:white;
+  
+  
+}
+
+#contact{
+  
+}
+
+.height{
+  height: 550px;
+
+}
+/* Pro lift effect with an elliptical shadow under the card */
+.lift-card{
+  position: relative;
+  isolation: isolate;                 /* keep pseudo-shadow underneath */
+  border-radius: 1rem;
+  transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+  will-change: transform, box-shadow;
+  background: #fff;                   /* ensure solid bg for shadow contrast */
+}
+
+/* Under-card shadow plate */
+.lift-card::before{
+  content:"";
+  position:absolute;
+  left: 12%; right: 12%;
+  bottom: -12px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+              rgba(0,0,0,.25) 0%,
+              rgba(0,0,0,.15) 40%,
+              rgba(0,0,0,0) 70%);
+  filter: blur(6px);
+  opacity: 0;
+  transform: translateY(0) scale(.95);
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: -1;                        /* sit below the card */
+}
+
+.lift-card:hover,
+.lift-card:focus-within{
+  transform: translate3d(0,-8px,0);   /* subtle lift */
+  box-shadow: 0 18px 40px rgba(0,0,0,.18), 0 8px 18px rgba(0,0,0,.12);
+}
+
+.lift-card:hover::before,
+.lift-card:focus-within::before{
+  opacity: 1;
+  transform: translateY(8px) scale(1); /* shadow drops as card lifts */
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce){
+  .lift-card{ transition: none; }
+  .lift-card::before{ transition: none; }
+}
+/* Section */
+.offer-cards{ padding:40px 0; background:#0b1320; color:#fff; }
+.offer-head{ text-align:center; margin-bottom:16px; }
+.offer-head h2{ margin:0; font-size:clamp(24px,4vw,32px); font-weight:800; }
+.offer-head h2 span{ color:#35a0ff; }
+
+/* Scroller viewport */
+.offer-scroller{ position:relative; overflow:hidden; padding:8px 0 18px; }
+.offer-scroller::before,
+.offer-scroller::after{
+  content:""; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+}
+.offer-scroller::before{
+  left:0; background:linear-gradient(to right, #0b1320, rgba(11,19,32,0));
+}
+.offer-scroller::after{
+  right:0; background:linear-gradient(to left, #0b1320, rgba(11,19,32,0));
+}
+
+/* Track */
+.track{
+  display:flex; align-items:stretch; gap:16px;
+  will-change: transform;
+}
+
+/* Cards */
+.offer-card{
+  min-width:300px; width:300px; background:#111827; border-radius:16px; overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.offer-card:hover{
+  transform: translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+.offer-card img{
+  width:100%; height:200px; object-fit:cover; display:block;
+  filter: saturate(1.05) contrast(1.05);
+}
+.offer-card .body{ padding:12px 14px; }
+.offer-card h3{ margin:0 0 6px; font-size:1rem; font-weight:700; color:#e6f2ff; }
+.offer-card p{ margin:0; font-size:.9rem; color:#b8c2cc; }
+
+/* Pause on hover */
+.offer-scroller:hover .track{ transition: none; }
+
+
+
+
+
+
+/* CSS */
+.button-6 {
+  align-items: center;
+background: none;
+  border: 1px solid white;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+
+
+
+
+
+
+
+.new-btn{
+  border:none; 
+  outline:none; 
+  background:none;
+  align-items: center;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+  
+}
+.picture img{
+  position: absolute;
+  top: -30px;
+  width: 390px;
+  height: 390px;
+  right: -500px;
+  border-radius: 10px;
+}
+/* CSS */
+.button-32 {
+
+  border-radius: 12px;
+
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  transition: 200ms;
+  width: 100px;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 13px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-32:not(:disabled):hover,
+.button-32:not(:disabled):focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+}
+
+.button-32:disabled {
+  filter: saturate(0.2) opacity(0.5);
+  -webkit-filter: saturate(0.2) opacity(0.5);
+  cursor: not-allowed;
+}
+.card-body{
+  position: relative;
+  border-radius: 10px;
+ 
+
+}
+.card-body .button-32{
+  position: absolute;
+  top: -28px;
+  left: 20px;
+}
+.card-body .down{
+  position: absolute;
+  top: 373px;
+  left: 20px;
+  width: 220px;
+  padding: 15px 20px;
+
+}
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+
+}
+.con p{
+  padding-left: 35px;
+}
+.bank{
+  text-align: center;
+}
+.radius{
+  border-radius: 10px;
+}
+.power2{
+  height: 176px;
+}
+.power3{
+  height: 176px;
+}
+.safty{
+ margin-left: 5px;
+}
+.apple{
+margin-left: 5px;
+}
+.last{
+  border: 2px solid rgb(233, 233, 233);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* light gray shadow */
+  
+}
+.second{
+  border: 1px solid black;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* light gray shadow */
+}
+::placeholder{
+  color: black;
+}
+.my button{
+  height: 45px;
+  padding: 0px 0px;
+  width: 80px;
+  border-radius: 10px;
+  border: 1px solid white;
+  background-color: var(--bs-warning);
+  color: black;
+}
+
+
+.myimg img{
+  width: 400px;
+  height: 300px;
+  display: flex;
+  justify-content: 
+}
+/* Full-height slides */
+.hero-slide {
+  position: relative;
+  height: 100vh;                 /* full screen; change if you want shorter */
+  overflow: hidden;
+}
+
+/* Background image fills slide */
+.bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+/* Centered overlay that holds YOUR layout */
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;           /* perfect vertical + horizontal center */
+  z-index: 2;                    /* above background */
+  padding: 20px;
+}
+
+/* Your existing flex layout (content + side image) */
+.maindiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: min(90%, 1200px);       /* keeps it nicely centered and narrow */
+  color: #fff;                   /* readable on bg */
+}
+
+/* Buttons under the text block */
+.content .button-6,
+.content .new-btn {
+  margin-top: 10px;
+  margin-right: 12px;
+}
+
+/* Side image sizing */
+.img0 img {
+  max-width: 420px;              /* control side image size */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Optional: dark overlay for readability (uncomment if needed) */
+/*
+.slide-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: -1;
+}
+*/
+
+/* Mobile: stack content above image */
+@media (max-width: 768px) {
+  .maindiv {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+}
+/* put arrows on top */
+#heroCarousel .carousel-control-prev,
+#heroCarousel .carousel-control-next{
+  z-index: 5;
+}
+
+/* keep overlay below arrows and allow your buttons to work */
+.slide-overlay{
+  z-index: 2;
+  pointer-events: none;                 /* overlay doesn’t eat clicks */
+}
+.slide-overlay .maindiv,
+.slide-overlay .maindiv *{
+  pointer-events: auto;                 /* your content/buttons still clickable */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
